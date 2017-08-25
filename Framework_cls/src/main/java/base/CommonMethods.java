@@ -12,8 +12,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.Select;
 
-import framework_day1.WdEventListener;
-import framework_day1.WrapperMethodInterface;
+import base.WdEventListener;
+import base.WrapperMethodInterface;
 
 public class CommonMethods extends WdEventListener implements WrapperMethodInterface{
 	
@@ -22,7 +22,7 @@ public class CommonMethods extends WdEventListener implements WrapperMethodInter
 	String url;
 	Select sObj;
 	WebElement field=null;
-	public static EventFiringWebDriver eventdriver; // to access outsidethis package ie in AbstarctPAge
+	public static EventFiringWebDriver eventdriver; // to access outside this package ie in AbstarctPAge
 	
    public void invokeAppFirefox(String url)
      {
@@ -102,9 +102,9 @@ public class CommonMethods extends WdEventListener implements WrapperMethodInter
 	 WebElement elemnt = null;
 	return elemnt;	
 	}
-	public boolean verifyText(String locatorType, String locatorValue,String textValue)
+	public boolean verifyText(WebElement field,String textValue)
 	{
-		String targetString=get_Text(locatorType,locatorValue );
+		String targetString=get_Text(field);
 		
 		if (targetString.equals(textValue))
 	
@@ -218,14 +218,8 @@ public class CommonMethods extends WdEventListener implements WrapperMethodInter
 
 	@Override
 	public void closeAllBrowsers() {
-		// TODO Auto-generated method stub
+		eventdriver.quit();
 		
-	}
-
-	@Override
-	public String get_Text(String locatorType, String locatorValue) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }
